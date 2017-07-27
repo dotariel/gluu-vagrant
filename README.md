@@ -1,7 +1,20 @@
 # gluu-vagrant
-Creates a Gluu server using Vagrant.
+This repository creates a Gluu server with Shibboleth IdP installed. The VM is created with 2 CPUs and 8GB of RAM by default as recommended in the Gluu documentation. [Gluu Installation](https://gluu.org/docs/ce/installation-guide/)
 
-## Usage
+## Getting Started
+To get started, create the Vagrant instance:
+
 ```
 vagrant up
 ```
+
+
+
+Next, login to the Gluu UI at https://gluu.local, and authenticate with the following credentials:
+```
+username: admin
+password: admin123
+```
+
+## Configure SAML
+[Gluu Documentation](https://gluu.org/docs/ce/admin-guide/saml/)

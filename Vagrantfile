@@ -10,6 +10,10 @@ Vagrant.configure("2") do |config|
     config.vm.box = "centos/7"
     config.vm.network "private_network", ip: ip
     config.vm.hostname = hostname
+    config.vm.provider "virtualbox" do |v|
+        v.cpus = 2
+        v.memory = 8196
+    end
 
     config.vm.provision :ansible do |ansible|
       ansible.playbook = "ansible/site.yml"
