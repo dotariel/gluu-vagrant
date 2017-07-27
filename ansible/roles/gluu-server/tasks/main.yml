@@ -1,0 +1,16 @@
+---
+- copy: src=etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU dest=/etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
+- copy: src=etc/yum.repos.d/gluu.repo dest=/etc/yum.repos.d/gluu.repo
+
+- package:
+    name: gluu-server-3.0.2
+    state: present
+
+- command: /sbin/gluu-serverd-3.0.2 enable
+- command: /sbin/gluu-serverd-3.0.2 start
+
+- template: 
+    src: opt/gluu/install/community-edition-setup/setup.properties.j2
+    dest: /opt/gluu-server-3.0.2/install/community-edition-setup/setup.properties
+
+- command: ssh -o IdentityFile=/etc/gluu/keys/gluu-console -o Port=60022 -o LogLevel=QUIET -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o PubKeyAuthentication=yes root@localhost "cd /install/community-edition-setup && ./setup.py -s -n -f setup.properties"
