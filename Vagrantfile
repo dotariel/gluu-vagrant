@@ -1,16 +1,14 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# This mapping needs to exist in /etc/hosts
-hostname = "gluu.local"
+# The hostname and IP mapping must exist in 
+# /etc/hosts
 ip = "192.168.2.120"
+hostname = "gluu.local"
 
 Vagrant.configure("2") do |config|
     config.vm.box = "centos/7"
-
-    # You must amp the IP value to the 
     config.vm.network "private_network", ip: ip
-
     config.vm.hostname = hostname
 
     config.vm.provision :ansible do |ansible|
