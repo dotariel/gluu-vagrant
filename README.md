@@ -8,7 +8,10 @@ To get started, create the Vagrant instance:
 vagrant up
 ```
 
-
+Then, create a hostname mapping for `gluu.local` in `etc/hosts`:
+```
+192.168.2.120 gluu.local
+```
 
 Next, login to the Gluu UI at https://gluu.local, and authenticate with the following credentials:
 ```
